@@ -2,9 +2,17 @@
   "name": "finlar-bot-api",
   "version": "0.0.1",
   "description": "API NestJS do assistente financeiro Finlar (Telegram + PostgreSQL + IA)",
-  "author": "",
+  "author": "Weslley Fernando Teixeira Chaves",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Weslley-hub/finance_bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Weslley-hub/finance_bot/issues"
+  },
+  "homepage": "https://github.com/Weslley-hub/finance_bot#readme",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

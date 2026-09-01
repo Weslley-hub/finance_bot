@@ -117,3 +117,15 @@ No grupo, o Telegram também sugere a lista ao digitar `/`.
 - Fale **eu**, **esposa**, **nós** ou o nome da pessoa para filtrar gastos.
 - O `/fatura` lista cada recorrência do mês e as **atrasadas** à parte.
 - Em dúvida, mande `/ajuda` no grupo.
+
+## Autoria
+
+Copyright © 2026 **Weslley Fernando Teixeira Chaves** ([@Weslley-hub](https://github.com/Weslley-hub)).
+
+Este é um projeto de código aberto. Você pode usar, copiar, modificar, estudar e distribuir — inclusive comercialmente — desde que **mantenha o aviso de copyright e a licença MIT**.
+
+Fork, pull request e commit de outras pessoas são bem-vindos. Quem contribui aparece no histórico do Git; a autoria do Finlar continua sendo de Weslley. Veja o [guia de contribuição](CONTRIBUTING.md).
+
+## Licença
+
+Distribuído sob a licença [MIT](LICENSE).

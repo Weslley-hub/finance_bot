@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Weslley Fernando Teixeira Chaves. Licensed under MIT. */
 import './load-env';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -18,8 +19,16 @@ async function bootstrap() {
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Finlar Bot API')
-    .setDescription('API do assistente financeiro Finlar via Telegram')
+    .setDescription(
+      'API do assistente financeiro Finlar via Telegram. Copyright (c) 2026 Weslley Fernando Teixeira Chaves. MIT.',
+    )
     .setVersion('0.1.0')
+    .setLicense('MIT', 'https://github.com/Weslley-hub/finance_bot/blob/main/LICENSE')
+    .setContact(
+      'Weslley Fernando Teixeira Chaves',
+      'https://github.com/Weslley-hub',
+      undefined,
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
