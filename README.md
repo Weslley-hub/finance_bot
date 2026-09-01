@@ -1,100 +1,119 @@
-# Finlar Bot API
+# Finlar
 
-Backend NestJS do assistente financeiro **Finlar**. A API recebe atualizações do Telegram, persiste dados no PostgreSQL (Prisma) e se integra com a OpenAI.
+Assistente financeiro da família no Telegram. Você escreve como fala — `gastei 45 no almoço`, `recebi 5500 de salário` — e o bot organiza receitas, despesas, cartões, contas e o resumo do mês.
 
-## Pré-requisitos
+Ele **só funciona no grupo da família**, não no chat privado.
 
-- Node.js 20
-- Docker e Docker Compose
-- Token do bot no Telegram (BotFather)
-- Chave da OpenAI (quando for usar IA)
+## Como encontrar o bot
 
-## FIN-010 — Criar o bot no BotFather
+No Telegram, busque **Finlar** ou abra:
 
-Isso precisa ser feito na sua conta do Telegram (não dá para automatizar daqui):
+**[@finance_house_bot](https://t.me/finance_house_bot)**
 
-1. Abra o Telegram e converse com [@BotFather](https://t.me/BotFather).
-2. Envie `/newbot`.
-3. Escolha um nome (ex.: `Finlar`) e um username que termine com `bot` (ex.: `finlar_assistente_bot`).
-4. Copie o token gerado.
-5. Cole no arquivo `.env`:
+Toque em **Iniciar**. O bot vai pedir para você usar o grupo da família.
+
+## Como colocar no grupo
+
+1. Crie um grupo só da família (ou use o que vocês já têm).
+2. Toque no nome do grupo → **Adicionar membros**.
+3. Busque `@finance_house_bot` e adicione.
+4. No grupo, envie:
 
 ```
-TELEGRAM_BOT_TOKEN=123456789:AA...seu_token
+/configuracoes
 ```
 
-Nunca coloque o token no código-fonte.
+5. Use os botões:
+   - **Adicionar membros** — quem já falou no grupo entra na família
+   - **Todos** / **Só admins** / **Membros selecionados** — quem pode registrar gastos
 
-## Configuração
+Pronto. Cada pessoa da casa precisa mandar pelo menos uma mensagem no grupo para o bot reconhecê-la (por exemplo `oi`).
 
-```bash
-cp .env.example .env
+Se o bot responder que o grupo não está autorizado, envie o id que ele mostrar para quem administra o Finlar.
+
+## Como usar no dia a dia
+
+Não precisa de comando. Escreva no grupo:
+
+```
+gastei 45 no almoço
+mercado 350
+recebi meu salário 5500
+minha esposa recebeu 3500
+gastei 120 no Nubank
 ```
 
-Variáveis:
+### Contas que se repetem, parcelas e cartão
 
-| Variável | Descrição |
+```
+todo dia 10 pago 289 do terreno
+Netflix 55,90 todo dia 7
+comprei uma TV de 2400 em 10x no Nubank
+cartão Nubank limite 5000 fecha dia 22 vence dia 29
+```
+
+### Perguntar como está o mês
+
+```
+como estão nossas finanças?
+quanto gastamos com mercado?
+quanto eu gastei?
+quanto minha esposa gastou?
+onde estamos gastando mais?
+quanto ainda temos para pagar?
+como devemos terminar o mês?
+```
+
+### Corrigir o último lançamento
+
+```
+na verdade foram 46 reais
+coloca como restaurante
+foi no Nubank
+```
+
+Ou use `/editar` e `/desfazer`.
+
+## Foto e PDF
+
+Mande no grupo:
+
+- foto ou PDF de comprovante (PIX, TED, boleto)
+- fatura do cartão em PDF
+- conta de energia, água ou internet
+
+PIX entre os bancos da casa (Nubank → Inter) vira **transferência**, não despesa. Depois dá para confirmar no card ou escrever `paguei a energia`.
+
+## Comandos
+
+No grupo, o Telegram também sugere a lista ao digitar `/`.
+
+| Comando | O que faz |
 | --- | --- |
-| `DATABASE_URL` | Conexão PostgreSQL (local: porta 5433) |
-| `TELEGRAM_BOT_TOKEN` | Token do BotFather |
-| `OPENAI_API_KEY` | Chave da OpenAI |
-| `PORT` | Porta HTTP (padrão local 3001) |
+| `/ajuda` | Ajuda completa e exemplos |
+| `/resumo` | Receitas, despesas e saldo do mês |
+| `/extrato` | Histórico. Ex.: `/extrato hoje`, `/extrato agosto` |
+| `/categorias` | Gastos do mês por categoria |
+| `/contas` | Contas do mês |
+| `/fatura` | O que ainda falta pagar (fatura, parcelas, recorrentes) |
+| `/previsao` | Como o mês deve terminar |
+| `/cartoes` | Lista os cartões. Cadastro: `/cartao Nubank limite 5000 fecha dia 22 vence dia 29` |
+| `/limites` | Limite usado e disponível. Ex.: `/limite Santander usado 4500` |
+| `/orcamento` | Limite por categoria. Ex.: `/orcamento mercado 1200` |
+| `/metas` | Meta de guardar. Ex.: `/metas 2000` |
+| `/recorrentes` | Contas que se repetem. Ex.: `/recorrentes Terreno 289 todo dia 10` |
+| `/receita` | Registrar receita. Ex.: `/receita 5000 salario` |
+| `/despesa` | Registrar despesa. Ex.: `/despesa 350 mercado` |
+| `/transferencia` | Entre contas. Ex.: `/transferencia 500 do nubank para o inter` |
+| `/editar` | Corrigir o último lançamento |
+| `/desfazer` | Arquivar o último registro (não apaga de vez) |
+| `/auditoria` | Quem criou, alterou ou arquivou cada lançamento |
+| `/subcategorias` | Lista de categorias |
+| `/configuracoes` | Vincular o grupo e definir quem pode registrar |
+| `/ping` | Testar se o bot está no ar |
 
-## Subir com Docker
+## Dicas
 
-Na pasta `finlar-bot-api`:
-
-```bash
-docker compose up --build
-```
-
-Sobe PostgreSQL na porta `5433` (a `5432` do host já estava em uso) e a API na porta `3001` (a `3000` do host já estava em uso).
-
-- Health: http://localhost:3001/health
-- Swagger: http://localhost:3001/docs
-
-## Desenvolvimento local
-
-Com o Postgres no Docker:
-
-```bash
-docker compose up postgres -d
-npm install
-npx prisma generate
-npx prisma migrate deploy
-npm run start:dev
-```
-
-## Telegram (FIN-011)
-
-O módulo `src/telegram` já trata:
-
-- mensagem de texto
-- foto
-- documento
-- PDF
-- comandos (`/start`, `/help`, `/ping`)
-- callback de botão inline
-
-Sem `TELEGRAM_BOT_TOKEN` válido, a API sobe normalmente e o polling do bot fica desligado.
-
-## Estrutura
-
-```
-src/
-├── telegram/
-├── users/
-├── families/
-├── transactions/
-├── categories/
-├── accounts/
-├── cards/
-├── bills/
-├── recurring/
-├── budgets/
-├── reports/
-├── documents/
-├── ai/
-├── notifications/
-└── common/
-```
+- Fale **eu**, **esposa**, **nós** ou o nome da pessoa para filtrar gastos.
+- O `/fatura` lista cada recorrência do mês e as **atrasadas** à parte.
+- Em dúvida, mande `/ajuda` no grupo.
