@@ -1,0 +1,3 @@
+-- AlterEnum
+ALTER TYPE "TransactionType" ADD VALUE IF NOT EXISTS 'TRANSFER';
+ALTER TYPE "TransactionType" ADD VALUE IF NOT EXISTS 'LOAN';
