@@ -117,6 +117,83 @@ No grupo, o Telegram também sugere a lista ao digitar `/`.
 - Fale **eu**, **esposa**, **nós** ou o nome da pessoa para filtrar gastos.
 - O `/fatura` lista cada recorrência do mês e as **atrasadas** à parte.
 - Em dúvida, mande `/ajuda` no grupo.
+- No grupo, `/subcategorias` mostra esta lista.
+
+## Categorias padrão
+
+O bot já cria estas categorias. O **nome** (e o da subcategoria) também vale como palavra-chave: `gastei 45 no almoço` cai em Almoço.
+
+Palavras com menos de 3 letras são ignoradas. Se nada casar, vai para **Outros**.
+
+### Despesas
+
+| Categoria | Palavras-chave |
+| --- | --- |
+| 🏠 Moradia | moradia |
+| 🍔 Alimentação | alimentacao, alimentação, comida, refeicao, refeição |
+| └ 🥗 Almoço | almoco, almoço |
+| └ 🍽️ Jantar | jantar |
+| └ 🍽️ Restaurante | restaurante |
+| └ 🛵 Delivery | delivery, ifood, rappi |
+| └ 🥪 Lanche | lanche |
+| └ ☕ Café | cafe, café |
+| 🛒 Mercado | mercado |
+| 🚗 Transporte | transporte |
+| └ ⛽ Combustível | combustivel, combustível, gasolina, etanol, alcool, álcool, diesel, gnv |
+| └ 🚕 Uber | uber |
+| └ 🔧 Manutenção | manutencao, manutenção |
+| └ 🅿️ Estacionamento | estacionamento |
+| 💡 Energia | energia, luz, enel, cemig, copel, cpfl, light, energisa |
+| 💧 Água | agua, água, sabesp, cedae, sanepar |
+| 🌐 Internet | internet, vivo, claro, net, virtua |
+| 📱 Telefonia | telefonia |
+| 💳 Cartão | cartao, cartão |
+| 🏥 Saúde | saude, saúde, academia |
+| 💊 Farmácia | farmacia, farmácia |
+| 🎓 Educação | educacao, educação, curso, faculdade, escola, udemy, alura |
+| 🎮 Lazer | lazer |
+| 👕 Roupas | roupas, tenis, tênis, sapato, calca, calça, camisa, roupa |
+| 🐶 Pets | pets |
+| 🎁 Presentes | presentes |
+| ✈️ Viagem | viagem |
+| 💰 Investimentos | investimentos |
+| 🏦 Empréstimos | emprestimos, empréstimos |
+| 📺 Assinaturas | assinaturas, netflix, spotify |
+| 💼 Trabalho | trabalho |
+
+### Receitas
+
+| Categoria | Palavras-chave |
+| --- | --- |
+| 💵 Salário | salario, salário, holerite, decimo terceiro, décimo terceiro, 13 salario |
+| 💸 Renda extra | renda extra, freelance, extra, bico |
+| ↩️ Reembolso | reembolso, estorno, devolucao, devolução, refund |
+| 📈 Rendimento | rendimento, dividendos, dividendo, juros |
+| 💵 Outras receitas | outras receitas |
+
+### Fallback
+
+| Categoria | Palavras-chave |
+| --- | --- |
+| 📦 Outros | *(nenhuma — é o destino quando o bot não reconhece a categoria)* |
+
+### Também reconhece em fatura e comprovante
+
+Se o texto parecer nome de loja (PDF, foto ou lançamento), estas regras entram antes das palavras-chave:
+
+| Se aparecer | Categoria |
+| --- | --- |
+| Uber Eats | Delivery |
+| Uber | Uber |
+| Posto, Posto Shell, Shell, Ipiranga, gasolina, etanol, diesel, combustível | Combustível |
+| alimentação, comida | Alimentação |
+| almoço | Almoço |
+| Netflix, Spotify | Assinaturas |
+| supermercado, mercadinho, Carrefour, Atacadão, mercado | Mercado |
+| iFood, Rappi | Delivery |
+| farmácia, drogaria | Farmácia |
+| Enel, Cemig | Energia |
+| Amazon | Outros |
 
 ## Autoria
 
