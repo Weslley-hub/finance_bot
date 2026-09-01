@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: Finlar
+message: Se usar este projeto, cite o autor.
+type: software
+authors:
+  - family-names: Chaves
+    given-names: Weslley Fernando Teixeira
+    email: weslleyfernando71609@gmail.com
+repository-code: https://github.com/Weslley-hub/finance_bot
+url: https://t.me/finance_house_bot
+license: MIT
+date-released: '2026-09-01'
+abstract: >-
+  Assistente financeiro da família no Telegram.
+  Copyright (c) 2026 Weslley Fernando Teixeira Chaves.

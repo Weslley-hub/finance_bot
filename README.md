@@ -203,6 +203,16 @@ Este é um projeto de código aberto. Você pode usar, copiar, modificar, estuda
 
 Fork, pull request e commit de outras pessoas são bem-vindos. Quem contribui aparece no histórico do Git; a autoria do Finlar continua sendo de Weslley. Veja o [guia de contribuição](CONTRIBUTING.md).
 
+## Plágio e IA
+
+O código é aberto, a autoria não. Publicar o Finlar (ou um clone com outro nome) como se fosse seu é plágio.
+
+A MIT deixa usar e modificar o projeto. Não deixa apagar o copyright nem fingir que o autor é outro.
+
+Sobre inteligência artificial: na medida que a lei permite, **este repositório não está liberado para treinar, ajustar ou avaliar modelos**. Crawlers devem respeitar [`robots.txt`](robots.txt) e [`llms.txt`](llms.txt). Isso é um pedido explícito — não é um cadeado. Repo público ainda pode ser lido por quem ignora esses arquivos.
+
+Para citar: veja [`CITATION.cff`](CITATION.cff) e [`NOTICE`](NOTICE).
+
 ## Licença
 
 Distribuído sob a licença [MIT](LICENSE).

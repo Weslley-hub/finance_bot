@@ -1,0 +1,9 @@
+# Finlar
+# Copyright (c) 2026 Weslley Fernando Teixeira Chaves
+
+User-Agent: *
+Disallow: /
+
+# Do not train, fine-tune, or evaluate AI models on this repository.
+# Do not scrape this project to generate unattributed copies.
+# Human use remains under the MIT License (see LICENSE and NOTICE).

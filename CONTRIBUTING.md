@@ -13,8 +13,9 @@ Fork, pull request e commit de outras pessoas são bem-vindos. A autoria do proj
 ## Regras
 
 - Não commite `.env`, tokens, chaves ou dados da família.
-- Mantenha o aviso de copyright e o arquivo `LICENSE` (MIT).
+- Mantenha o aviso de copyright e os arquivos `LICENSE` e `NOTICE`.
 - Não altere o autor do projeto nem a licença sem conversar antes.
+- Não publique o Finlar como se fosse seu. Veja a seção “Plágio e IA” no README.
 - Ao abrir o PR, você concorda que a contribuição entra sob a licença MIT.
 
 ## Depois que o PR entrar
