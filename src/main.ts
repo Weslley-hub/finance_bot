@@ -24,11 +24,6 @@ async function bootstrap() {
     )
     .setVersion('0.1.0')
     .setLicense('MIT', 'https://github.com/Weslley-hub/finance_bot/blob/main/LICENSE')
-    .setContact(
-      'Weslley Fernando Teixeira Chaves',
-      'https://github.com/Weslley-hub',
-      undefined,
-    )
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
