@@ -40,8 +40,10 @@ describe('assertFamilyBoundToChat', () => {
 });
 
 describe('unauthorizedChatMessage', () => {
-  it('explica que o grupo não está na lista', () => {
-    expect(unauthorizedChatMessage('-100123')).toContain('-100123');
-    expect(unauthorizedChatMessage('-100123')).toContain('não está autorizado');
+  it('orienta a pedir liberação com o id do grupo', () => {
+    const message = unauthorizedChatMessage('-100123');
+    expect(message).toContain('-100123');
+    expect(message).toContain('Este grupo não está autorizado');
+    expect(message).toContain('@weslleyteixeir4');
   });
 });

@@ -26,8 +26,8 @@ export function assertFamilyBoundToChat(
 
 export function unauthorizedChatMessage(chatId: string): string {
   return [
-    'Este chat não está autorizado.',
+    'Este grupo não está autorizado.',
     `Id do grupo: ${chatId}`,
-    'Inclua esse id em ALLOWED_TELEGRAM_CHAT_IDS e use /configuracoes só no grupo da família.',
+    'Envie esse ID do grupo para @weslleyteixeir4 e peça a liberação do grupo.',
   ].join('\n');
 }
